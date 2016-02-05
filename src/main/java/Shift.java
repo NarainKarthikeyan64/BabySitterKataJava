@@ -2,10 +2,13 @@
 
 public class Shift {
 
-int startTimeHours;
-int bedTimeHours;
+    int startTimeHours;
+    int bedTimeHours;
 
-final Double BEGINNING_HOUR_RATE = 12.00;
+    double total;
+
+    final Double BEGINNING_HOUR_RATE = 12.00;
+    final Double BED_TIME_RATE = 8.00;
 
     public Shift(int beginHours, int endHours) {
         if (beginHours >= 17 && (endHours <= 4 || endHours >= 17)) {
@@ -23,10 +26,18 @@ final Double BEGINNING_HOUR_RATE = 12.00;
     }
 
     public Double calculatePay() {
-        return BEGINNING_HOUR_RATE * (double)(20 - startTimeHours);
-    }
 
+        if (bedTimeHours <= 4) {
+            bedTimeHours += 24;
+        }
 
-
+        for (int i = startTimeHours; i < bedTimeHours; i++)
+            if (i < 20) {
+                total += BEGINNING_HOUR_RATE;
+            } else if (i >= 20 && i < 24) {
+                total += BED_TIME_RATE;
+            }
+        return total;
+      }
 
 }
