@@ -49,5 +49,17 @@ public class BabySitterTest {
       assertEquals(32, shift.calculatePay(), 0);
   }
 
+  @Test
+  public void paid16PerHourFromMidnightToEndOfJob() {
+      //Arrange
+
+
+      //Act
+      Shift shift = new Shift(12, 3);
+
+      //Assert
+      assertEquals(48, shift.calculatePay(), 0);
+  }
+
 
 }
