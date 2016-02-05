@@ -31,10 +31,10 @@ public class BabySitterTest {
 
 
       //Act
-      Shift shift = new Shift(17, 5);
+      Shift shift = new Shift(17,3);
 
       //Assert
-      assertEquals(36, shift.calculatePay());
+      assertEquals(36, shift.calculatePay(), 0);
   }
 
 
