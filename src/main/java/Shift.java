@@ -9,6 +9,7 @@ public class Shift {
 
     final Double BEGINNING_HOUR_RATE = 12.00;
     final Double BED_TIME_RATE = 8.00;
+    final Double END_SHIFT_RATE = 16.00;
 
     public Shift(int beginHours, int endHours) {
         if (beginHours >= 17 && (endHours <= 4 || endHours >= 17)) {
@@ -36,6 +37,8 @@ public class Shift {
                 total += BEGINNING_HOUR_RATE;
             } else if (i >= 20 && i < 24) {
                 total += BED_TIME_RATE;
+            } else if (i >= 24 && i <= 28){
+                total += END_SHIFT_RATE;
             }
         return total;
       }

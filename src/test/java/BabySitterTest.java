@@ -43,7 +43,7 @@ public class BabySitterTest {
 
 
       //Act
-      Shift shift = new Shift(20, 3);
+      Shift shift = new Shift(20, 24);
 
       //Assert
       assertEquals(32, shift.calculatePay(), 0);
@@ -55,7 +55,7 @@ public class BabySitterTest {
 
 
       //Act
-      Shift shift = new Shift(12, 3);
+      Shift shift = new Shift(24, 3);
 
       //Assert
       assertEquals(48, shift.calculatePay(), 0);
