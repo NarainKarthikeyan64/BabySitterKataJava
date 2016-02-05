@@ -61,5 +61,17 @@ public class BabySitterTest {
       assertEquals(48, shift.calculatePay(), 0);
   }
 
+  @Test
+  public void endToEndShiftTest() {
+      //Arrange
+
+
+      //Act
+      Shift shift = new Shift(17, 4);
+
+      //Assert
+      assertEquals(132, shift.calculatePay(), 0);
+  }
+
 
 }
