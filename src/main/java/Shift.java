@@ -22,7 +22,7 @@ int bedTimeHours;
 
     public Double calculatePay() {
         return 12.00 * (double)(20 - startTimeHours);
-    }
+    } 
 
 
 
