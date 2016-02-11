@@ -1,9 +1,9 @@
 public class Shift {
 
     int startTimeHours;
-    int bedTimeHours;
+    int endTimeHours;
 
-    double total;
+    double total = 0;
 
     final Double BEGINNING_HOUR_RATE = 12.00;
     final Double BED_TIME_RATE = 8.00;
@@ -12,7 +12,7 @@ public class Shift {
     public Shift(int beginHours, int endHours) {
         if (beginHours >= 17 && (endHours <= 4 || endHours >= 17)) {
             startTimeHours = beginHours;
-            bedTimeHours = endHours;
+            endTimeHours = endHours;
         }
     }
 
@@ -20,25 +20,44 @@ public class Shift {
         return startTimeHours;
     }
 
-    public int getBedTimeHours() {
-        return bedTimeHours;
+    public int getEndTimeHours() {
+        return endTimeHours;
     }
 
     public Double calculatePay() {
-
-        if (bedTimeHours <= 4) {
-            bedTimeHours += 24;
+        if (endTimeHours <= 4) {
+            endTimeHours += 24;
         }
-
-        for (int i = startTimeHours; i < bedTimeHours; i++)
-            if (i < 20) {
-                total += BEGINNING_HOUR_RATE;
-            } else if (i >= 20 && i < 24) {
-                total += BED_TIME_RATE;
-            } else if (i >= 24 && i <= 28){
-                total += END_SHIFT_RATE;
-            }
-        return total;
+        for (int i = startTimeHours; i < endTimeHours; i++) {
+            total += calculateBeginningHourPay(i);
+            total += calculateBedTimePay(i);
+            total += calculateEndTimePay(i);
+          }
+          return total;
       }
+
+      public Double calculateBeginningHourPay(int hour) {
+        if (hour < 20) {
+            return BEGINNING_HOUR_RATE;
+          } else {
+            return 0.0;
+          }
+      }
+
+      public Double calculateBedTimePay(int hour) {
+        if (hour >= 20 && hour < 24) {
+            return BED_TIME_RATE;
+        } else {
+            return 0.0;
+        }
+      }
+
+        public Double calculateEndTimePay(int hour) {
+           if (hour >= 24 && hour <= 28){
+              return END_SHIFT_RATE;
+           } else {
+              return 0.0;
+           }
+        }
 
 }

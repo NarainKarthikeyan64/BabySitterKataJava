@@ -22,7 +22,7 @@ public class BabySitterTest {
       Shift shift = new Shift(17, 5);
 
       //Assert
-      assertEquals(0, shift.getBedTimeHours());
+      assertEquals(0, shift.getEndTimeHours());
   }
 
   @Test
